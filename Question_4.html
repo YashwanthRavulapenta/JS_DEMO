@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Variable Scope Explained</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      color: #333;
+    }
+    .section {
+      background: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+    }
+    pre {
+      background: #f0f0f0;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    .output {
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>JavaScript Variable Scope</h1>
+
+  <div class="section">
+    <h2>1. Global Scope</h2>
+    <p>Declared outside functions or blocks. Accessible anywhere in the code.</p>
+    <pre><code>var globalVar = "I am global";
+
+function showGlobal() {
+  console.log(globalVar); // Accessible
+}
+
+showGlobal();</code></pre>
+    <p class="output">Output: I am global</p>
+  </div>
+
+  <div class="section">
+    <h2>2. Function (Local) Scope</h2>
+    <p>Declared inside a function. Accessible only within that function.</p>
+    <pre><code>function localScope() {
+  let localVar = "I am local";
+  console.log(localVar); // Accessible
+}
+
+localScope();
+// console.log(localVar); // Error</code></pre>
+    <p class="output">Output: I am local</p>
+  </div>
+
+  <div class="section">
+    <h2>3. Block Scope</h2>
+    <p>Variables declared with <code>let</code> and <code>const</code> are block scoped.</p>
+    <pre><code>{
+  let blockVar = "Block scoped";
+  console.log(blockVar); // Accessible inside block
+}
+// console.log(blockVar); // Error</code></pre>
+    <p class="output">Output: Block scoped</p>
+  </div>
+
+  <div class="section">
+    <h2>4. Variable Shadowing</h2>
+    <p>A local variable with the same name as a global one will shadow it within its scope.</p>
+    <pre><code>let name = "Global";
+
+function shadowExample() {
+  let name = "Local"; // Shadows the global variable
+  console.log(name);
+}
+
+shadowExample();
+console.log(name);</code></pre>
+    <p class="output">Output:<br>Local<br>Global</p>
+  </div>
+
+  <div class="section">
+    <h2>Common Issues</h2>
+    <ul>
+      <li>Accessing variables outside their scope leads to ReferenceErrors.</li>
+      <li>Shadowed variables may confuse or break your logic.</li>
+      <li><code>var</code> ignores block scope — prefer <code>let</code> and <code>const</code> in modern JS.</li>
+    </ul>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Currency Formatter</title>
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+      background: #f8f9fa;
+    }
+    input, select, button {
+      padding: 10px;
+      margin: 5px 0;
+      width: 100%;
+    }
+    .output {
+      font-size: 1.2rem;
+      margin-top: 15px;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>💰 Currency Formatter</h2>
+
+  <label>Enter Amount:</label>
+  <input type="number" id="amount" placeholder="Enter amount" />
+
+  <label>Select Currency:</label>
+  <select id="currencyCode">
+    <option value="USD">USD - US Dollar</option>
+    <option value="INR">INR - Indian Rupee</option>
+    <option value="EUR">EUR - Euro</option>
+    <option value="GBP">GBP - British Pound</option>
+    <option value="JPY">JPY - Japanese Yen</option>
+    <option value="AUD">AUD - Australian Dollar</option>
+    <option value="CAD">CAD - Canadian Dollar</option>
+  </select>
+
+  <button onclick="formatAndShow()">Format Currency</button>
+
+  <div class="output" id="result"></div>
+
+  <script>
+    function formatCurrency(amount, currencyCode) {
+      const currencyLocales = {
+        USD: 'en-US',
+        INR: 'en-IN',
+        EUR: 'de-DE',
+        GBP: 'en-GB',
+        JPY: 'ja-JP',
+        AUD: 'en-AU',
+        CAD: 'en-CA'
+      };
+
+      const locale = currencyLocales[currencyCode] || 'en-US';
+
+      return new Intl.NumberFormat(locale, {
+        style: 'currency',
+        currency: currencyCode,
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      }).format(amount);
+    }
+
+    function formatAndShow() {
+      const amount = parseFloat(document.getElementById("amount").value);
+      const code = document.getElementById("currencyCode").value;
+
+      if (isNaN(amount)) {
+        document.getElementById("result").innerText = "Please enter a valid amount.";
+        return;
+      }
+
+      const result = formatCurrency(amount, code);
+      document.getElementById("result").innerText = `Formatted Value: ${result}`;
+    }
+  </script>
+
+</body>
+</html>
