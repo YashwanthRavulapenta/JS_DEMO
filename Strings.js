@@ -22,8 +22,7 @@ function isPalindrome(s) {
   
     return longest;
   }
-
-let input = "abbabbabba";
+let input = "yashwannnawhs";
 let result = findLongestPalindrome(input);
 console.log("Input: " + input);
 console.log("Longest Palindromic Substring: " + result);

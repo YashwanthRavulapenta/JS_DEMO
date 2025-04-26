@@ -46,7 +46,7 @@ function evaluateConditions(obj) {
   };
   
   console.log(evaluateConditions(user)); // Output: "Eligible to drive"
-  console.log(evaluateConditions({ age: 17, hasLicense: false, temperature: 35, humidity: 80, role: "user", isActive: false, isLoggedIn: false, score: 85, hasCertificate: false, country: "Canada", isBanned: true, accountAge: 0 })); // Output: "User not logged in"
+  console.log(evaluateConditions(user)); // Output: "User not logged in"
   console.log(evaluateConditions({ age: 25, hasLicense: true, temperature: 25, humidity: 50, role: "admin", isActive: true, isLoggedIn: true, score: 92, hasCertificate: true, country: "USA", isBanned: false, accountAge: 3 })); // Output: "Eligible to drive"
   console.log(evaluateConditions({ age: 30, hasLicense: true, temperature: 32, humidity: 75, role: "viewer", isActive: false, isLoggedIn: true, score: 88, hasCertificate: false, country: "UK", isBanned: false, accountAge: 2 })); // Output: "Warning: High discomfort level"
   console.log(evaluateConditions({ age: 22, hasLicense: true, temperature: 28, humidity: 60, role: "admin", isActive: true, isLoggedIn: true, score: 95, hasCertificate: true, country: "India", isBanned: false, accountAge: 2 })); // Output: "Eligible to drive"
